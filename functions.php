@@ -176,3 +176,42 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+
+/**
+ * Add custom post types
+ * Note that you will have to got to Settings -> Permalinks, and hit Save in order to view
+ * new custom post types.
+ * Custom post types added to this file will not be seen if the theme is changes. They can
+ * also be added as a plugin.
+ */
+
+function starter_theme_custom_post_type() {
+	register_post_type(
+		'sample_type_brands',
+		array(
+			'labels'      => array(
+				'name'          => __( 'Brands' ), // Will show in sidebar on admin
+				'singular_name' => __( 'Brand' ),
+			),
+			'public'      => true,
+			'has_archive' => true,
+			'rewrite'     => array( 'slug' => 'brands' ), // Change slug from default ('twenty-twenty-one_child_product)
+		)
+	);
+}
+add_action( 'init', 'starter_theme_custom_post_type' );
+
+
+/**
+ * Developer tools
+ * Determine current template page
+ */
+
+function starter_theme_which_template_is_loaded() {
+	if ( is_super_admin() ) {  // Determines whether site user is admin
+		global $template; // Access the global variable
+		print_r( $template );
+	}
+}
+
+add_action( 'wp_footer', 'starter_theme_which_template_is_loaded' );
