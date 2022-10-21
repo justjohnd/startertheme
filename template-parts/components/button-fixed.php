@@ -9,4 +9,4 @@
 
 ?>
 
-<button class="button-sticky">I'm a sticky button</button>
+<button class="button-fixed">I'm a fixed button</button>

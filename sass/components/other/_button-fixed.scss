@@ -1,7 +1,7 @@
 $distance-from-edge: 3rem;
 
-.button-sticky {
-  position: sticky;
+.button-fixed {
+  position: fixed;
   right: $distance-from-edge;
   bottom: $distance-from-edge;
 }

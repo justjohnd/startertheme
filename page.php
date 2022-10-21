@@ -25,7 +25,7 @@ get_header();
         endwhile; // End of the loop.
 ?>
 
-	<?php get_template_part('template-parts/components', 'button-sticky'); ?>
+	<?php get_template_part('template-parts/components/button', 'fixed'); ?>
 
 
 	</main><!-- #main -->
