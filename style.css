@@ -519,6 +519,7 @@ table {
 --------------------------------------------- */
 a {
   color: #4169e1;
+  text-decoration: none;
 }
 a:visited {
   color: #800080;
@@ -616,11 +617,21 @@ textarea {
 /*--------------------------------------------------------------
 # Layouts
 --------------------------------------------------------------*/
-/*--------------------------------------------------------------
-# Components
---------------------------------------------------------------*/
+.site-header {
+  display: flex;
+  align-items: baseline;
+}
+
+.site-title {
+  margin: 0;
+}
+
 /* Navigation
 --------------------------------------------- */
+.menu-custom-menu-container {
+  position: relative;
+}
+
 .main-navigation {
   display: block;
   width: 100%;
@@ -630,6 +641,8 @@ textarea {
   list-style: none;
   margin: 0;
   padding-left: 0;
+  position: absolute;
+  inset: 0;
 }
 .main-navigation ul ul {
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
@@ -662,9 +675,24 @@ textarea {
   text-decoration: none;
 }
 /* Small menu. */
-.menu-toggle,
+.main-navigation {
+  align-self: center;
+}
+
 .main-navigation.toggled ul {
   display: block;
+}
+
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}
+
+.hamburger-bar {
+  width: 2rem;
+  height: 4px;
+  background-color: #000;
 }
 
 @media screen and (min-width: 37.5em) {
@@ -673,6 +701,7 @@ textarea {
   }
   .main-navigation ul {
     display: flex;
+    position: relative;
   }
 }
 .site-main .comment-navigation,
@@ -697,6 +726,9 @@ textarea {
   flex: 1 0 50%;
 }
 
+/*--------------------------------------------------------------
+# Components
+--------------------------------------------------------------*/
 /* Posts and pages
 --------------------------------------------- */
 .sticky {
