@@ -457,7 +457,7 @@ big {
 /* Elements
 --------------------------------------------- */
 body {
-  background: #fff;
+  background-color: #fff;
 }
 
 hr {
@@ -634,7 +634,6 @@ textarea {
 
 .main-navigation {
   display: block;
-  width: 100%;
 }
 .main-navigation ul {
   display: none;
@@ -675,6 +674,10 @@ textarea {
   text-decoration: none;
 }
 /* Small menu. */
+.site-header {
+  justify-content: space-between;
+}
+
 .main-navigation {
   align-self: center;
 }
@@ -696,12 +699,15 @@ textarea {
 }
 
 @media screen and (min-width: 37.5em) {
-  .menu-toggle {
-    display: none;
+  .main-navigation {
+    align-self: unset;
   }
   .main-navigation ul {
     display: flex;
     position: relative;
+  }
+  .menu-toggle {
+    display: none;
   }
 }
 .site-main .comment-navigation,
@@ -859,12 +865,24 @@ textarea {
   display: block;
 }
 
-/* Other
+/* Fixed button
 --------------------------------------------- */
 .button-fixed {
   position: fixed;
   right: 3rem;
   bottom: 3rem;
+}
+
+/* Full screen overlay
+--------------------------------------------- */
+.overlay-full-screen {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #21759b;
+  z-index: 10;
+  cursor: pointer;
 }
 
 /*--------------------------------------------------------------

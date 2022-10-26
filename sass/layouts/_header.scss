@@ -15,8 +15,6 @@
 
 .main-navigation {
   display: block;
-  width: 100%;
-
 
   ul {
     display: none;
@@ -84,6 +82,10 @@
 }
 
 /* Small menu. */
+.site-header {
+  justify-content: space-between;
+}
+
 .main-navigation {
   align-self: center;
 }
@@ -105,14 +107,17 @@
 }
 
 @media screen and (min-width: 37.5em) {
+  .main-navigation {
+    align-self: unset;
+
+    ul {
+      display: flex;
+      position: relative;
+    }
+  }
 
   .menu-toggle {
     display: none;
-  }
-
-  .main-navigation ul {
-    display: flex;
-    position: relative;
   }
 }
 
