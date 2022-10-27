@@ -796,6 +796,18 @@ textarea {
   display: inline-block;
 }
 
+.social-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+svg.svg-facebook {
+  fill: #4267B2;
+}
+svg.svg-instagram {
+  fill: url(#rg-svg-instagram);
+}
+
 /* Captions
 --------------------------------------------- */
 .wp-caption {

@@ -3,9 +3,21 @@
 This boilerplate themes is built off of `underscores`; see below for further
 details on that theme.
 
-**Developer Notes** If PHP Code Sniffer is installed, you can run `phpcs .` from
-inside the theme folder to check for errors. Run `phpcbf` to automatically fix
-any errors.
+# Developer Notes
+
+If PHP Code Sniffer is installed, you can run `phpcs .` from inside the theme
+folder to check for errors. Run `phpcbf` to automatically fix any errors.
+
+## Media
+
+### Social Media icons
+
+Social media icons for instragram and facebook are included in the theme in the
+form of svgs. Icons can be added by using the template parts in
+`template-parts/components/svgs`. For example, you can add the facebook icon
+with `get_template_part('template-parts/components/svgs/svg', 'facebook');`
+
+Styles are controlled under `sass/components/media/_medias.scss`.
 
 # _s
 

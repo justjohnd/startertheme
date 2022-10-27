@@ -11,3 +11,20 @@
 .custom-logo-link {
 	display: inline-block;
 }
+
+// Social icons
+.social-icon {
+	width: 2rem;
+	height: 2rem;
+}
+
+svg {
+	&.svg-facebook {
+		fill: #4267B2;
+	}
+
+	&.svg-instagram {
+		fill: url(#rg-svg-instagram);
+	}
+
+}

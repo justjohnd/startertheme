@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying a sticky button
+ * Template part for displaying a fixed button
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
