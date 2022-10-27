@@ -1,0 +1,145 @@
+//Utility Classes
+$breakpoints: (sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+//Width
+$widths: (25, 50, 75, 100);
+
+@each $width in $widths {
+  .w-#{$width} {
+    width: #{$width}+"%";
+  }
+}
+
+@each $width in $widths {
+
+  @each $name,
+  $breakpoint in $breakpoints {
+    @media (min-width: $breakpoint) {
+      .w-#{$name}-#{$width} {
+        width: #{$width}+"%";
+      }
+    }
+  }
+}
+
+//Displays
+$displayTypes: (none, flex, block);
+
+@each $display in $displayTypes {
+  .d-#{$display} {
+    display: #{$display};
+  }
+}
+
+@each $display in $displayTypes {
+
+  @each $name,
+  $breakpoint in $breakpoints {
+    @media (min-width: $breakpoint) {
+      .d-#{$name}-#{$display} {
+        display: #{$display};
+      }
+    }
+  }
+}
+
+//Margins and padding
+$sizes: (0: 0,
+  1: 0.5rem,
+  2: 1rem,
+  3: 1.5rem,
+  4: 2rem,
+  auto: auto,
+);
+
+$spaces: (".m": margin,
+  ".ml": margin-left,
+  ".mr": margin-right,
+  ".mt": margin-top,
+  ".mb": margin-bottom,
+  ".p": padding,
+  ".pl": padding-left,
+  ".pr": padding-right,
+  ".pt": padding-top,
+  ".pb": padding-bottom,
+);
+
+@each $spaceName,
+$space in $spaces {
+
+  @each $sizeName,
+  $size in $sizes {
+    #{$spaceName}-#{$sizeName} {
+      #{$space}: #{$size};
+    }
+
+    .mx-#{$sizeName} {
+      margin-left: #{$size};
+      margin-right: #{$size};
+    }
+
+    .my-#{$sizeName} {
+      margin-top: #{$size};
+      margin-bottom: #{$size};
+    }
+
+    .px-#{$sizeName} {
+      padding-left: #{$size};
+      padding-right: #{$size};
+    }
+
+    .py-#{$sizeName} {
+      padding-top: #{$size};
+      padding-bottom: #{$size};
+    }
+  }
+}
+
+@each $spaceName,
+$space in $spaces {
+
+  @each $sizeName,
+  $size in $sizes {
+
+    @each $breakName,
+    $breakpoint in $breakpoints {
+      #{$spaceName}-#{$breakName}-#{$sizeName} {
+        @media (min-width: $breakpoint) {
+          #{$space}: #{$size};
+        }
+      }
+
+      .mx-#{$breakName}-#{$sizeName} {
+        @media (min-width: $breakpoint) {
+          margin-left: #{$size};
+          margin-right: #{$size};
+        }
+      }
+
+      .my-#{$breakName}-#{$sizeName} {
+        @media (min-width: $breakpoint) {
+          margin-top: #{$size};
+          margin-bottom: #{$size};
+        }
+      }
+
+      .px-#{$breakName}-#{$sizeName} {
+        @media (min-width: $breakpoint) {
+          padding-left: #{$size};
+          padding-right: #{$size};
+        }
+      }
+
+      .py-#{$breakName}-#{$sizeName} {
+        @media (min-width: $breakpoint) {
+          padding-top: #{$size};
+          padding-bottom: #{$size};
+        }
+      }
+    }
+  }
+}
