@@ -26,5 +26,23 @@ svg {
 	&.svg-instagram {
 		fill: url(#rg-svg-instagram);
 	}
+}
 
+// Image Zoom on hover
+.zoom-on-hover-wrapper {
+	overflow: hidden;
+	width: 300px; //Contain image so that it doesn't grow on scale. Change as needed
+	aspect-ratio: 1 / 1;
+	display: flex;
+}
+
+img.zoom-on-hover {
+	max-height: 100%;
+	max-width: 100%;
+	object-fit: cover;
+	transition: .5s all ease-in-out;
+}
+
+.zoom-on-hover:hover {
+	transform: scale(1.2);
 }

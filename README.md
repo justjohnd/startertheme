@@ -19,6 +19,11 @@ with `get_template_part('template-parts/components/svgs/svg', 'facebook');`
 
 Styles are controlled under `sass/components/media/_medias.scss`.
 
+## Images
+
+Use `template-parts/components/image-zoom.php` to add the zoom effect to images
+on hover. Styles and animation are in `sass/components/media/_media.scss`.
+
 # _s
 
 Hi. I'm a starter theme called `_s`, or `underscores`, if you like. I'm a theme
