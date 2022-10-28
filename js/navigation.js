@@ -5,21 +5,21 @@
  * navigation support for dropdown menus.
  */
 (function () {
-	const siteNavigation = document.getElementById('site-navigation');
+	const siteNavigation = document.getElementById( 'site-navigation' );
 
 	// Return early if the navigation doesn't exist.
-	if (!siteNavigation) {
+	if ( ! siteNavigation) {
 		return;
 	}
 
-	const button = siteNavigation.getElementsByTagName('button')[0];
+	const button = siteNavigation.getElementsByTagName( 'button' )[0];
 
 	// Return early if the button doesn't exist.
 	if ('undefined' === typeof button) {
 		return;
 	}
 
-	const menu = siteNavigation.getElementsByTagName('ul')[0];
+	const menu = siteNavigation.getElementsByTagName( 'ul' )[0];
 
 	// Hide menu toggle button if menu is empty and return early.
 	if ('undefined' === typeof menu) {
@@ -27,53 +27,62 @@
 		return;
 	}
 
-	if (!menu.classList.contains('nav-menu')) {
-		menu.classList.add('nav-menu');
+	if ( ! menu.classList.contains( 'nav-menu' )) {
+		menu.classList.add( 'nav-menu' );
+	}
+
+	const mobileMenu = document.querySelector( '.menu-custom-menu-container' );
+
+	// Function to toggle mobile menu
+	function handleMenu() {
+		siteNavigation.classList.toggle( 'toggled' );
+
+		if (button.getAttribute( 'aria-expanded' ) === 'true') {
+			button.setAttribute( 'aria-expanded', 'false' );
+		} else {
+			button.setAttribute( 'aria-expanded', 'true' );
+		}
+	}
+
+	// Remove event listener from button if a page link is clicked. This prevents anything from changing prior to the new page loading. Remove if you want the menu to change prior to load
+	const menuItems = document.querySelectorAll( '.menu-item' );
+	for (const menuItem of menuItems) {
+		menuItem.addEventListener(
+			'click',
+			() => {
+				mobileMenu.removeEventListener( 'click', handleMenu );
+				console.log( 'item clicked' );
+			}
+		);
 	}
 
 	// Toggle the .toggled class and the aria-expanded value each time the button is clicked.
 	button.addEventListener(
 		'click',
-		function () {
-			siteNavigation.classList.toggle('toggled');
-
-			if (button.getAttribute('aria-expanded') === 'true') {
-				button.setAttribute('aria-expanded', 'false');
-			} else {
-				button.setAttribute('aria-expanded', 'true');
-			}
-		}
+		handleMenu
 	);
 
-	// Remove the .toggled class and set aria-expanded to false when the user clicks outside the navigation.
-	document.addEventListener(
+	// Remove the .toggled class and set aria-expanded to false when the user clicks anything other than a link
+	mobileMenu.addEventListener(
 		'click',
-		function (event) {
-
-			const isClickInside = siteNavigation.contains(event.target);
-
-			if (!isClickInside) {
-				siteNavigation.classList.remove('toggled');
-				button.setAttribute('aria-expanded', 'false');
-			}
-		}
+		handleMenu
 	);
 
 	// Get all the link elements within the menu.
-	const links = menu.getElementsByTagName('a');
+	const links = menu.getElementsByTagName( 'a' );
 
 	// Get all the link elements with children within the menu.
-	const linksWithChildren = menu.querySelectorAll('.menu-item-has-children > a, .page_item_has_children > a');
+	const linksWithChildren = menu.querySelectorAll( '.menu-item-has-children > a, .page_item_has_children > a' );
 
 	// Toggle focus each time a menu link is focused or blurred.
 	for (const link of links) {
-		link.addEventListener('focus', toggleFocus, true);
-		link.addEventListener('blur', toggleFocus, true);
+		link.addEventListener( 'focus', toggleFocus, true );
+		link.addEventListener( 'blur', toggleFocus, true );
 	}
 
 	// Toggle focus each time a menu link with children receive a touch event.
 	for (const link of linksWithChildren) {
-		link.addEventListener('touchstart', toggleFocus, false);
+		link.addEventListener( 'touchstart', toggleFocus, false );
 	}
 
 	/**
@@ -83,10 +92,10 @@
 		if (event.type === 'focus' || event.type === 'blur') {
 			let self = this;
 			// Move up through the ancestors of the current link until we hit .nav-menu.
-			while (!self.classList.contains('nav-menu')) {
+			while ( ! self.classList.contains( 'nav-menu' )) {
 				// On li elements toggle the class .focus.
 				if ('li' === self.tagName.toLowerCase()) {
-					self.classList.toggle('focus');
+					self.classList.toggle( 'focus' );
 				}
 				self = self.parentNode;
 			}
@@ -97,10 +106,25 @@
 			event.preventDefault();
 			for (const link of menuItem.parentNode.children) {
 				if (menuItem !== link) {
-					link.classList.remove('focus');
+					link.classList.remove( 'focus' );
 				}
 			}
-			menuItem.classList.toggle('focus');
+			menuItem.classList.toggle( 'focus' );
 		}
 	}
 }());
+
+
+// document.addEventListener(
+// 'click',
+// function (event) {
+// console.log(event);
+
+// const isClickInside = siteNavigation.contains(event.target);
+
+// if (!isClickInside) {
+// siteNavigation.classList.remove('toggled');
+// button.setAttribute('aria-expanded', 'false');
+// }
+// }
+// );
