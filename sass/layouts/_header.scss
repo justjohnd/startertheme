@@ -52,9 +52,10 @@
 }
 
 .hamburger-bar {
-  width: 2rem;
-  height: 4px;
+  width: 35px;
+  height: 5px;
   background-color: $color__dark;
+  transition: .4s;
 }
 
 // Naviation toggled
@@ -72,6 +73,18 @@
 
 .toggled .nav-menu {
   display: block;
+}
+
+.toggled .hamburger-bar:nth-child(1) {
+  transform: translate(0, 9px) rotate(-45deg);
+}
+
+.toggled .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.toggled .hamburger-bar:nth-child(3) {
+  transform: translate(0, -9px) rotate(45deg);
 }
 
 @media screen and (min-width: 37.5em) {
