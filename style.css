@@ -458,6 +458,7 @@ big {
 --------------------------------------------- */
 body {
   background-color: #fff;
+  padding: 1rem;
 }
 
 hr {
@@ -10405,6 +10406,10 @@ textarea {
   list-style: none;
   margin: 1rem;
   padding-left: 1rem;
+  color: #fff;
+}
+.main-navigation ul li a {
+  color: #fff;
 }
 .main-navigation ul li:hover > ul, .main-navigation ul li.focus > ul {
   display: block;
@@ -10419,9 +10424,7 @@ textarea {
   display: flex;
   flex-direction: column;
   row-gap: 4px;
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
+  position: relative;
   z-index: 999;
 }
 
@@ -10437,7 +10440,7 @@ textarea {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #fff;
+  background-color: rgba(33, 117, 155, 0.9);
   z-index: 998;
   height: 100%;
   width: 100%;
@@ -10456,6 +10459,9 @@ textarea {
     position: relative;
     margin: 0;
     padding: 0;
+  }
+  .main-navigation ul li a {
+    color: #4169e1;
   }
   .menu-toggle {
     display: none;

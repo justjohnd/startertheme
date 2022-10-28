@@ -19,8 +19,13 @@
     list-style: none;
     margin: 1rem;
     padding-left: 1rem;
+    color: $color__white;
 
     li {
+
+      a {
+        color: $color__white;
+      }
 
       &:hover>ul,
       &.focus>ul {
@@ -42,9 +47,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 4px;
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
+  position: relative;
   z-index: 999;
 }
 
@@ -61,7 +64,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: $color__background-body;
+  background-color: rgba($color__menu, .9);
   z-index: 998;
   height: 100%;
   width: 100%;
@@ -80,6 +83,12 @@
       position: relative;
       margin: 0;
       padding: 0;
+
+      li {
+        a {
+          color: $color__link;
+        }
+      }
     }
   }
 
