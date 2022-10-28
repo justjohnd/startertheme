@@ -521,9 +521,6 @@ a {
   color: #4169e1;
   text-decoration: none;
 }
-a:visited {
-  color: #800080;
-}
 a:hover, a:focus, a:active {
   color: #191970;
 }
@@ -10390,6 +10387,7 @@ textarea {
 .site-header {
   display: flex;
   align-items: baseline;
+  justify-content: space-between;
 }
 
 .site-title {
@@ -10398,74 +10396,55 @@ textarea {
 
 /* Navigation
 --------------------------------------------- */
-.menu-custom-menu-container {
-  position: relative;
-}
-
 .main-navigation {
   display: block;
+  align-self: center;
 }
 .main-navigation ul {
   display: none;
   list-style: none;
-  margin: 0;
-  padding-left: 0;
-  position: absolute;
-  inset: 0;
+  margin: 1rem;
+  padding-left: 1rem;
 }
-.main-navigation ul ul {
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-  float: left;
-  position: absolute;
-  top: 100%;
-  left: -999em;
-  z-index: 99999;
-}
-.main-navigation ul ul ul {
-  left: -999em;
-  top: 0;
-}
-.main-navigation ul ul li:hover > ul, .main-navigation ul ul li.focus > ul {
+.main-navigation ul li:hover > ul, .main-navigation ul li.focus > ul {
   display: block;
   left: auto;
-}
-.main-navigation ul ul a {
-  width: 200px;
 }
 .main-navigation ul li:hover > ul,
 .main-navigation ul li.focus > ul {
   left: auto;
-}
-.main-navigation li {
-  position: relative;
-}
-.main-navigation a {
-  display: block;
-  text-decoration: none;
-}
-/* Small menu. */
-.site-header {
-  justify-content: space-between;
-}
-
-.main-navigation {
-  align-self: center;
-}
-
-.main-navigation.toggled ul {
-  display: block;
 }
 
 .menu-toggle {
   display: flex;
   flex-direction: column;
   row-gap: 4px;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
 }
 
 .hamburger-bar {
   width: 2rem;
   height: 4px;
   background-color: #000;
+}
+
+.toggled .menu-custom-menu-container {
+  display: block;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 998;
+  height: 100%;
+  width: 100%;
+}
+
+.toggled .nav-menu {
+  display: block;
 }
 
 @media screen and (min-width: 37.5em) {
@@ -10475,6 +10454,8 @@ textarea {
   .main-navigation ul {
     display: flex;
     position: relative;
+    margin: 0;
+    padding: 0;
   }
   .menu-toggle {
     display: none;
@@ -10675,7 +10656,8 @@ img.zoom-on-hover {
 
 /* Full screen overlay
 --------------------------------------------- */
-.overlay-full-screen {
+.overlay-full-screen,
+.overlay-modal {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -10683,6 +10665,35 @@ img.zoom-on-hover {
   background-color: #21759b;
   z-index: 10;
   cursor: pointer;
+  opacity: 0.2;
+}
+
+/* Modal
+--------------------------------------------- */
+.modal-wrapper {
+  position: relative;
+}
+
+.modal-window {
+  width: 500px;
+  height: 500px;
+  inset: 0;
+  z-index: 20;
+  border: 1px #000 solid;
+}
+
+.modal-hide {
+  display: none;
+}
+
+.modal-show {
+  position: fixed;
+  top: 50%;
+  bottom: 0;
+  left: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
 }
 
 /*--------------------------------------------------------------

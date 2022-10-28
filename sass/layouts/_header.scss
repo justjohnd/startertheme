@@ -1,6 +1,7 @@
 .site-header {
   display: flex;
   align-items: baseline;
+  justify-content: space-between;
 }
 
 .site-title {
@@ -9,53 +10,25 @@
 
 /* Navigation
 --------------------------------------------- */
-.menu-custom-menu-container {
-  position: relative;
-}
-
 .main-navigation {
   display: block;
+  align-self: center;
 
   ul {
     display: none;
     list-style: none;
-    margin: 0;
-    padding-left: 0;
-    position: absolute;
-    inset: 0;
+    margin: 1rem;
+    padding-left: 1rem;
 
-    ul {
-      box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-      float: left;
-      position: absolute;
-      top: 100%;
-      left: -999em;
-      z-index: 99999;
+    li {
 
-      ul {
-        left: -999em;
-        top: 0;
+      &:hover>ul,
+      &.focus>ul {
+        display: block;
+        left: auto;
       }
-
-      li {
-
-        &:hover>ul,
-        &.focus>ul {
-          display: block;
-          left: auto;
-        }
-      }
-
-      a {
-        width: 200px;
-      }
-
-      :hover>a,
-      .focus>a {}
-
-      a:hover,
-      a.focus {}
     }
+
 
     li:hover>ul,
     li.focus>ul {
@@ -63,47 +36,39 @@
     }
   }
 
-  li {
-    position: relative;
-
-    &:hover>a,
-    &.focus>a {}
-  }
-
-  a {
-    display: block;
-    text-decoration: none;
-  }
-
-  .current_page_item>a,
-  .current-menu-item>a,
-  .current_page_ancestor>a,
-  .current-menu-ancestor>a {}
-}
-
-/* Small menu. */
-.site-header {
-  justify-content: space-between;
-}
-
-.main-navigation {
-  align-self: center;
-}
-
-.main-navigation.toggled ul {
-  display: block;
 }
 
 .menu-toggle {
   display: flex;
   flex-direction: column;
   row-gap: 4px;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
 }
 
 .hamburger-bar {
   width: 2rem;
   height: 4px;
   background-color: $color__dark;
+}
+
+// Naviation toggled
+.toggled .menu-custom-menu-container {
+  display: block;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $color__background-body;
+  z-index: 998;
+  height: 100%;
+  width: 100%;
+}
+
+.toggled .nav-menu {
+  display: block;
 }
 
 @media screen and (min-width: 37.5em) {
@@ -113,6 +78,8 @@
     ul {
       display: flex;
       position: relative;
+      margin: 0;
+      padding: 0;
     }
   }
 

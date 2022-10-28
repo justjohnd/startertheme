@@ -6,7 +6,6 @@
  */
 (function () {
 	const siteNavigation = document.getElementById('site-navigation');
-	const body = document.querySelector('body');
 
 	// Return early if the navigation doesn't exist.
 	if (!siteNavigation) {
@@ -37,8 +36,6 @@
 		'click',
 		function () {
 			siteNavigation.classList.toggle('toggled');
-			body.classList.toggle('overlay-full-screen');
-			console.log(body);
 
 			if (button.getAttribute('aria-expanded') === 'true') {
 				button.setAttribute('aria-expanded', 'false');
@@ -52,11 +49,11 @@
 	document.addEventListener(
 		'click',
 		function (event) {
+
 			const isClickInside = siteNavigation.contains(event.target);
 
 			if (!isClickInside) {
 				siteNavigation.classList.remove('toggled');
-				body.classList.remove('overlay-full-screen');
 				button.setAttribute('aria-expanded', 'false');
 			}
 		}

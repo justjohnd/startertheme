@@ -13,13 +13,17 @@
  */
 
 get_header();
-
 ?>
 
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
+    <div class="modal-container">
+        <button type=button class="modal-button">Click for modal
+        </button>
+        <div class="modal-window modal-hide">This is a modal</div>
+    </div>
 
-		<?php
+    <?php
         while (have_posts()) :
             the_post();
 
@@ -27,10 +31,10 @@ get_header();
         endwhile; // End of the loop.
 ?>
 
-	<?php get_template_part('template-parts/components/button', 'fixed'); ?>
+    <?php get_template_part('template-parts/components/button', 'fixed'); ?>
 
 
-	</main><!-- #main -->
+</main><!-- #main -->
 
 <?php
 get_footer();

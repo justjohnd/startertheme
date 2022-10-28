@@ -1,4 +1,5 @@
-.overlay-full-screen {
+.overlay-full-screen,
+.overlay-modal {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -6,4 +7,5 @@
   background-color: $color__text-screen;
   z-index: 10;
   cursor: pointer;
+  opacity: .2;
 }
