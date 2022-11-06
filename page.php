@@ -17,20 +17,29 @@ get_header();
 ?>
 
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
+	<!-- List three most recent posts only using WP_query -->
 
-		<?php
-        while (have_posts()) :
-            the_post();
+	<?php
+	$recent_posts_query = new WP_Query( 'posts_per_page=2' );
 
-            get_template_part('template-parts/content', 'page');
-        endwhile; // End of the loop.
-?>
+	if ( $recent_posts_query->have_posts() ) :
+		while ( $recent_posts_query->have_posts() ) :
+			$recent_posts_query->the_post();
+			the_title( '<li>', '</li>' );
 
-	<?php get_template_part('template-parts/components/button', 'fixed'); ?>
+		endwhile;
+
+endif;
+	wp_reset_postdata();
 
 
-	</main><!-- #main -->
+	?>
+
+	<?php get_template_part( 'template-parts/components/button', 'fixed' ); ?>
+
+
+</main><!-- #main -->
 
 <?php
 get_footer();
